@@ -189,10 +189,6 @@ npx expo start
      - Username/Password input
      - Error handling
      - Loading states
-   - Registration Screen (if implemented)
-     - User details input
-     - Validation
-     - Success/Error states
 
 2. **Main Navigation (Tabs)**
 
@@ -209,6 +205,9 @@ npx expo start
      - Category selection
      - Amount input
      - Description field
+   - Profile screen
+     - User details
+     - Logout functionality
 
 3. **Expense Management Screens**
    - Expense List Screen
@@ -269,45 +268,22 @@ npx expo start
 | Add Expense     | `/expenses`        | POST   | Create new expense   |
 | Delete Expense  | `/expenses/{id}`   | DELETE | Remove expense       |
 
-### Data Models
-
-1. **User Model**
-
-   ```typescript
-   interface User {
-     id: string;
-     username: string;
-     email: string;
-     // Additional user fields
-   }
-   ```
-
-2. **Expense Model**
-
-   ```typescript
-   interface Expense {
-     id: string;
-     name: string;
-     amount: string;
-     description: string;
-     userId: string;
-     createdAt: string;
-     // Additional expense fields
-   }
-   ```
+```
 
 ## 📁 Project Structure
 
 ```
+
 expense-tracker/
 ├── app/
-│   ├── (tabs)/           # Tab-based navigation screens
-│   ├── expenses/         # Expense-related screens
-│   ├── context/          # React Context providers
-│   ├── services/         # API services
-│   └── utils/            # Utility functions
-├── components/           # Reusable components
-└── assets/              # Static assets
+│ ├── (tabs)/ # Tab-based navigation screens
+│ ├── expenses/ # Expense-related screens
+│ ├── context/ # React Context providers
+│ ├── services/ # API services
+│ └── utils/ # Utility functions
+├── components/ # Reusable components
+└── assets/ # Static assets
+
 ```
 
 ## 🎨 Features Implementation
@@ -384,3 +360,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <div align="center">
 Made with ❤️ by [Bruce NKUNDABAGENZI]
 </div>
+```
