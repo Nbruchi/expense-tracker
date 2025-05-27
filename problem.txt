@@ -1,0 +1,55 @@
+1. INTEGRATED SITUATION
+Project description
+ABCD Ltd is a software development company based in Kigall City. The company
+specializes in creating innovative software solutions to help individuals and
+buninesses manage their finances better.
+
+ABCD Ltd recently won a tender to develop a "Personal Finance Tracker" mobile
+application. As part of the mobile application development team, your role is to
+create a cross-platform mobile app that will be compatible with Android and iOS
+platforms.
+
+The app should enable users to track their daily expenses, set budgets, receive
+notifications for budget limits, and visualize their spending habits on the
+dashboard. The application should work seamlessly an both Android and iOS
+platforms.
+
+The app must include basic functionalities for data input, storage, and retrieval
+while providing a user-friendly interface that adheres to industry standards using
+https://mockapi.io/projects/7ac71475853dfff53dab92a
+endpoints below to manage expenses and usera respectively:
+- https:///67ac71475853dfff53dab929.mockapi/api/v1/users
+- https://67ac71475853dfff53dab929.mockapi/api/v1/expenses
+
+As a mobile application developer, you are tasked to develop Personal Finance
+Tracker mobile app as described below:
+
+TASKS
+1. Task 1
+Allow users to login using valid username and password found in users
+Rwandao
+GET API >/users?username=exampleagmail.com
+
+2. Task 2
+User creates a new expense using POST API >/expenses
+
+3. Task 3
+User opens an expense created above and show its details using GET API
+>/expenses/{expenseld}
+
+4. Task 4
+Display all expenses using API GET /expenses
+
+5. Task 5
+Delete a specific using DELETE API >/expenses/{expenseld}
+
+Instructions:
+    (i) In the first hour, you should read carefully the problem to be solved and writing down appropriate designs including but not limited to the Data flow diagram, architecture of your application, outline appropriate endpoints to be developed and pages that need to be developed.
+    (ii) Android application should be built using React Native
+    (iii) Input must be validated where applicable
+    (iv) Handie errors and validations, in case of any error or exception users should see relevant message of what wrong
+    (v) Interaction with backend APIs should be done using axios library.
+    (vi) Testing mobile application should be done using expo cli package.
+
+Additional information:
+    - Use react native expo applications
