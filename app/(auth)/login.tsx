@@ -28,7 +28,7 @@ export default function LoginScreen() {
 
       if (users.length > 0 && users[0].password === password) {
         await login(users[0]);
-        router.replace("/(tabs)");
+        router.replace("/");
       } else {
         setError("Invalid username or password");
       }
@@ -41,15 +41,15 @@ export default function LoginScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-gradient-to-br from-green-light to-green-dark">
-      <View className="flex-1 justify-center items-center p-4">
+    <SafeAreaView className="flex-1 bg-gradient-to-br from-green-light to-green-dark w-full">
+      <View className="flex-1 justify-center items-center p-4 w-full">
         <Text className="text-2xl font-bold text-gray-800 mb-6">
           Welcome Back
         </Text>
 
         {error ? <Text className="text-red-500 mb-4">{error}</Text> : null}
 
-        <View className="space-y-4">
+        <View className="space-y-4 w-full">
           <View>
             <Text className="text-gray-700 mb-2">Email</Text>
             <TextInput

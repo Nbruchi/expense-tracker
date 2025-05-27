@@ -7,7 +7,23 @@ const api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  timeout: 10000,
 });
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.code === "ECONNABORTED") {
+      console.error("Request timeout");
+      throw new Error("Request timeout. Please try again.");
+    }
+    if (!error.response) {
+      console.error("Network error:", error);
+      throw new Error("Network error. Please check your connection.");
+    }
+    throw error;
+  }
+);
 
 export type User = {
   id: string;

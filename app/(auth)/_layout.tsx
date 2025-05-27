@@ -28,6 +28,7 @@ export default function AuthLayout() {
         name="login"
         options={{
           title: "Login",
+          headerShown: false,
         }}
       />
     </Stack>
