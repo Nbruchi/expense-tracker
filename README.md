@@ -98,122 +98,35 @@ npx expo start
 
 ## 📊 Data Flow Diagram
 
-```mermaid
-graph TD
-    subgraph Client
-        UI[User Interface]
-        Auth[Authentication]
-        State[State Management]
-    end
+![Data Flow Diagram](./assets/images/data-flow.png)
 
-    subgraph API
-        UsersAPI[Users API]
-        ExpensesAPI[Expenses API]
-    end
+### Data Flow Description
 
-    subgraph Database
-        UsersDB[(Users Database)]
-        ExpensesDB[(Expenses Database)]
-    end
+1. **Authentication Flow**
 
-    %% Authentication Flow
-    UI -->|Login Request| Auth
-    Auth -->|Validate Credentials| UsersAPI
-    UsersAPI -->|Query| UsersDB
-    UsersAPI -->|Return User Data| Auth
-    Auth -->|Store Token| State
+   - User enters credentials in the UI
+   - Authentication module validates credentials against Users API
+   - On success, token is stored in state management
+   - Protected routes check for valid token
 
-    %% Expense Management Flow
-    UI -->|CRUD Operations| State
-    State -->|API Requests| ExpensesAPI
-    ExpensesAPI -->|Query/Update| ExpensesDB
-    ExpensesAPI -->|Return Data| State
-    State -->|Update UI| UI
+2. **Expense Management Flow**
 
-    %% API Endpoints
-    UsersAPI -->|GET /users?username=| UsersDB
-    ExpensesAPI -->|POST /expenses| ExpensesDB
-    ExpensesAPI -->|GET /expenses/{id}| ExpensesDB
-    ExpensesAPI -->|GET /expenses| ExpensesDB
-    ExpensesAPI -->|DELETE /expenses/{id}| ExpensesDB
+   - User interacts with UI to perform CRUD operations
+   - State management handles API requests
+   - Expenses API processes requests and interacts with database
+   - Updated data flows back to UI through state management
 
-    style UI fill:#f9f,stroke:#333,stroke-width:2px
-    style Auth fill:#bbf,stroke:#333,stroke-width:2px
-    style State fill:#bfb,stroke:#333,stroke-width:2px
-    style UsersAPI fill:#fbb,stroke:#333,stroke-width:2px
-    style ExpensesAPI fill:#fbb,stroke:#333,stroke-width:2px
-    style UsersDB fill:#ddd,stroke:#333,stroke-width:2px
-    style ExpensesDB fill:#ddd,stroke:#333,stroke-width:2px
-```
+3. **API Endpoints**
+   - Users API: `GET /users?username=` - User authentication
+   - Expenses API:
+     - `POST /expenses` - Create new expense
+     - `GET /expenses/{id}` - Get specific expense
+     - `GET /expenses` - List all expenses
+     - `DELETE /expenses/{id}` - Delete expense
 
 ## 🏗️ System Architecture
 
-```mermaid
-graph TB
-    subgraph Frontend["📱 Frontend (React Native + Expo)"]
-        direction TB
-        subgraph UI["🎨 UI Layer"]
-            direction TB
-            Tabs["(tabs)/"]
-            Expenses["expenses/"]
-            Auth["auth/"]
-        end
-
-        subgraph Components["🧩 Components"]
-            direction TB
-            Common["Common Components"]
-            Forms["Form Components"]
-            Cards["Card Components"]
-        end
-
-        subgraph State["🔄 State Management"]
-            direction TB
-            Context["React Context"]
-            AuthContext["Auth Context"]
-            ExpenseContext["Expense Context"]
-        end
-
-        subgraph Utils["🔧 Utilities"]
-            direction TB
-            Validation["Form Validation"]
-            Formatting["Data Formatting"]
-            Helpers["Helper Functions"]
-        end
-    end
-
-    subgraph Services["🌐 Services Layer"]
-        direction TB
-        API["API Service"]
-        AuthService["Auth Service"]
-        ExpenseService["Expense Service"]
-    end
-
-    subgraph Backend["⚙️ Backend (MockAPI)"]
-        direction TB
-        UsersAPI["Users API"]
-        ExpensesAPI["Expenses API"]
-    end
-
-    %% Frontend Connections
-    UI --> Components
-    Components --> State
-    State --> Utils
-    Utils --> Services
-
-    %% Service Layer Connections
-    Services --> Backend
-    AuthService --> UsersAPI
-    ExpenseService --> ExpensesAPI
-
-    %% Styling
-    classDef frontend fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-    classDef service fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-    classDef backend fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
-
-    class Frontend,UI,Components,State,Utils frontend
-    class Services,API,AuthService,ExpenseService service
-    class Backend,UsersAPI,ExpensesAPI backend
-```
+![System Architecture](./assets/images/system-architecture.png)
 
 ### Architecture Components
 
