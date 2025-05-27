@@ -179,6 +179,123 @@ npx expo start
    - Error messages
    - Form validation
 
+## 📱 Screens & Endpoints
+
+### Screens
+
+1. **Authentication Screens**
+
+   - Login Screen
+     - Username/Password input
+     - Error handling
+     - Loading states
+   - Registration Screen (if implemented)
+     - User details input
+     - Validation
+     - Success/Error states
+
+2. **Main Navigation (Tabs)**
+
+   - Dashboard Tab
+     - Overview of expenses
+     - Quick stats
+     - Recent transactions
+   - Expenses Tab
+     - List of all expenses
+     - Search functionality
+     - Filter options
+   - Add Expense Tab
+     - Expense form
+     - Category selection
+     - Amount input
+     - Description field
+
+3. **Expense Management Screens**
+   - Expense List Screen
+     - Grid/List view of expenses
+     - Search bar
+     - Sort options
+   - Expense Details Screen
+     - Full expense information
+     - Edit functionality
+     - Delete option
+   - Add/Edit Expense Screen
+     - Form for expense details
+     - Validation
+     - Save/Cancel actions
+
+### API Endpoints
+
+1. **Authentication Endpoints**
+
+   ```typescript
+   // Users API
+   GET /users?username={username}
+   // Response: User object with authentication details
+   ```
+
+2. **Expense Management Endpoints**
+
+   ```typescript
+   // Create new expense
+   POST /expenses
+   Body: {
+     name: string,
+     amount: string,
+     description: string,
+     userId: string
+   }
+
+   // Get all expenses
+   GET /expenses
+   // Response: Array of expense objects
+
+   // Get specific expense
+   GET /expenses/{expenseId}
+   // Response: Single expense object
+
+   // Delete expense
+   DELETE /expenses/{expenseId}
+   // Response: Success/Error message
+   ```
+
+### Screen-Endpoint Mapping
+
+| Screen          | Endpoint           | Method | Purpose              |
+| --------------- | ------------------ | ------ | -------------------- |
+| Login           | `/users?username=` | GET    | User authentication  |
+| Expenses List   | `/expenses`        | GET    | Fetch all expenses   |
+| Expense Details | `/expenses/{id}`   | GET    | Fetch single expense |
+| Add Expense     | `/expenses`        | POST   | Create new expense   |
+| Delete Expense  | `/expenses/{id}`   | DELETE | Remove expense       |
+
+### Data Models
+
+1. **User Model**
+
+   ```typescript
+   interface User {
+     id: string;
+     username: string;
+     email: string;
+     // Additional user fields
+   }
+   ```
+
+2. **Expense Model**
+
+   ```typescript
+   interface Expense {
+     id: string;
+     name: string;
+     amount: string;
+     description: string;
+     userId: string;
+     createdAt: string;
+     // Additional expense fields
+   }
+   ```
+
 ## 📁 Project Structure
 
 ```
